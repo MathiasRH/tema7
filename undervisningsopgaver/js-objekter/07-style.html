@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Document</title>
+
+
+    <style>
+        img {
+            width: 100%;
+        }
+
+        .modtager {
+            display: grid;
+            grid-gap: 10px;
+            grid-template-columns: repeat(5, 1fr);
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        article {
+            border: 1px solid #999;
+        }
+
+        article:nth-child(even) {
+            background: #999;
+        }
+
+        @media screen and (min-width:600px) {
+            .modtager {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <template>
+        <article>
+            <h1></h1>
+            <p></p>
+            <p></p>
+            <img src="" alt="">
+
+        </article>
+    </template>
+    <section class="modtager"></section>
+
+    <script>
+        const dyr = [{
+                "navn": "Gris",
+                "type": "Pattedyr",
+                "levested": "Svinefarme",
+                "billede": "http://mabe-kea.dk/E19/pics/pig.png"
+            }, {
+                "navn": "Frø",
+                "type": "Amfibie",
+                "levested": "Vandhullet",
+                "billede": "http://mabe-kea.dk/E19/pics/frog.png"
+            }, {
+                "navn": "Ræv",
+                "type": "Pattedyr",
+                "levested": "Skoven",
+                "billede": "http://mabe-kea.dk/E19/pics/fox.png"
+            },
+            {
+                "navn": "Sild",
+                "type": "Fisk",
+                "levested": "Havet",
+                "billede": "http://mabe-kea.dk/E19/pics/sild.jpg"
+            },
+            {
+                "navn": "Krokodille",
+                "type": "Krybdyr",
+                "levested": "Floden",
+                "billede": "http://mabe-kea.dk/E19/pics/kroko.jpg"
+            }
+
+        ]
+
+        const modtagerKloner = document.querySelector(".modtager");
+        const temp = document.querySelector("template");
+
+        dyr.forEach(dyr => {
+            const klon = temp.cloneNode(true).content;
+            klon.querySelector("h1").textContent = dyr.navn;
+            klon.querySelector("p").textContent = dyr.type;
+            klon.querySelector("p + p").textContent = dyr.levested;
+            klon.querySelector("img").src = dyr.billede;
+            modtagerKloner.appendChild(klon);
+        })
+    </script>
+
+</body>
+
+</html>

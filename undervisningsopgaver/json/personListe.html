@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Visalle</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        img {
+            max-width: 100%;
+        }
+
+        article {
+            border: 1px solid #999;
+            border-top: 5px;
+        }
+
+        #liste {
+            display: grid;
+            grid-gap: 10px;
+            grid-template-columns: 1fr 1fr 1fr;
+            margin: 0 auto;
+        }
+
+        article:nth-child(even) {
+            background: #999;
+        }
+
+        article:nth-child(odd) {
+            background: lightblue;
+        }
+
+        @media screen and (max-width:1000px) {
+            #liste {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media screen and (max-width:500px) {
+            #liste {
+                grid-template-columns: repeat(1, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body> <template>
+        <article>
+            <h2></h2>
+            <img src="" alt="">
+            <a></a>
+        </article>
+    </template>
+    <section id="liste"></section>
+    <script>
+        let allePersoner = [];
+        document.addEventListener("DOMContentLoaded", start);
+
+        function start() {
+            const dest = document.querySelector("#liste");
+            const temp = document.querySelector("template");
+            async function getJson() {
+                let jsonData = await fetch("https://spreadsheets.google.com/feeds/list/1Xge7slZ9dEOTCn1Yxl3OE4xgvrXOL8Y_iu3WN1yGB1U/od6/public/values?alt=json");
+                allePersoner = await jsonData.json();
+                console.log("allePersoner", allePersoner);
+                visPersoner();
+            }
+
+            function visPersoner() {
+                allePersoner.feed.entry.forEach((personer) => {
+                    const klon = temp.cloneNode(true).content;
+                    klon.querySelector("h2").textContent = personer.gsx$navn.$t;
+                    klon.querySelector("img").src = personer.gsx$billede.$t;
+                    klon.querySelector("a").textContent = personer.gsx$github.$t;
+                    dest.appendChild(klon);
+                })
+            }
+            getJson();
+        }
+    </script>
+</body>
+
+</html>

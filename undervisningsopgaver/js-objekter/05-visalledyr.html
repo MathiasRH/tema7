@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Document</title>
+
+</head>
+
+<body>
+    <article>
+
+
+    </article>
+
+    <script>
+        const dyr = [{
+                "navn": "Gris",
+                "type": "Pattedyr",
+                "levested": "Svinefarme",
+                "billede": "http://mabe-kea.dk/E19/pics/pig.png"
+            }, {
+                "navn": "Frø",
+                "type": "Amfibie",
+                "levested": "frank@furt.dk",
+                "billede": "http://mabe-kea.dk/E19/pics/frog.png"
+            }, {
+                "navn": "Ræv",
+                "type": "Pattedyr",
+                "levested": "frank@furt.dk",
+                "billede": "http://mabe-kea.dk/E19/pics/fox.png"
+            },
+            {
+                "navn": "Sild",
+                "type": "Fisk",
+                "levested": "frank@furt.dk",
+                "billede": "http://mabe-kea.dk/E19/pics/sild.png"
+            },
+            {
+                "navn": "Krokodille",
+                "type": "Krybdyr",
+                "levested": "frank@furt.dk",
+                "billede": "http://mabe-kea.dk/E19/pics/kroko.png"
+            }
+
+        ]
+
+
+        const liste = document.querySelector("article");
+        dyr.forEach(dyr => {
+            liste.innerHTML += `<p>${dyr.navn} ${dyr.type} ${dyr.levested} ${dyr.billede}</p>`
+        })
+    </script>
+
+</body>
+
+</html>
