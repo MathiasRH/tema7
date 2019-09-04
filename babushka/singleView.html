@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="">
+<html lang="da">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bistro Babushka Single view</title>
+    <title>Bistro Babushka</title>
 
     <head>
         <style>
@@ -35,6 +35,7 @@
             article {
                 background-color: lightgoldenrodyellow;
             }
+
         </style>
     </head>
 </head>
@@ -72,13 +73,15 @@
             mad.feed.entry.forEach(mad => {
                 if (mad.gsx$navn.$t == navn) {
                     document.querySelector(".enkeltMad h2").textContent = mad.gsx$navn.$t;
-                    document.querySelector(".enkeltMad img").src = mad.gsx$billede.$t + '.jpg';
+                    document.querySelector(".enkeltMad img").src = 'img/' + mad.gsx$billede.$t + '.jpg';
+                    document.querySelector(".enkeltMad img").alt = mad.gsx$navn.$t;
                     document.querySelector(".lang").textContent = mad.gsx$lang.$t;
                     document.querySelector(".oprindelse").textContent = "Oprindelse: " + mad.gsx$oprindelse.$t;
                     document.querySelector(".pris").textContent = "Pris: " + mad.gsx$pris.$t + ",-";
                 }
             })
         }
+
     </script>
 </body>
 

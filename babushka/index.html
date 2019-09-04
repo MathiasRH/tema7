@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bistro Babushka Popup</title>
+    <title>Bistro Babushka</title>
     <style>
         html {
             background-color: lightgoldenrodyellow;
@@ -61,6 +61,7 @@
 
         footer {
             background-color: darkorange;
+            border: 1px solid black;
         }
 
         .footer {
@@ -100,6 +101,7 @@
 
         header {
             text-align: center;
+
         }
 
         button {
@@ -110,6 +112,7 @@
             background: grey;
             cursor: pointer;
         }
+
     </style>
 </head>
 
@@ -193,7 +196,8 @@
                 if (filterMad == "alle" || filterMad == mad.gsx$kategori.$t) {
                     const klon = temp.cloneNode(true).content;
                     klon.querySelector("h2").textContent = mad.gsx$navn.$t;
-                    klon.querySelector("img").src = mad.gsx$billede.$t + '.jpg';
+                    klon.querySelector("img").src = 'img/' + mad.gsx$billede.$t + '.jpg';
+                    klon.querySelector("img").alt = mad.gsx$navn.$t;
                     klon.querySelector(".kort").textContent = mad.gsx$kort.$t;
                     klon.querySelector(".pris").textContent = "Pris: " + mad.gsx$pris.$t + ",-";
                     dest.appendChild(klon);
@@ -208,7 +212,8 @@
             document.querySelector("#popup").style.display = "block";
             document.querySelector("#popup .luk").addEventListener("click", lukSingle);
             document.querySelector(".enkeltMad h2").textContent = mad.gsx$navn.$t;
-            document.querySelector(".enkeltMad img").src = mad.gsx$billede.$t + '.jpg';
+            document.querySelector(".enkeltMad img").src = 'img/' + mad.gsx$billede.$t + '.jpg';
+            document.querySelector(".enkeltMad img").alt = mad.gsx$navn.$t;
             document.querySelector(".lang").textContent = mad.gsx$lang.$t;
             document.querySelector(".oprindelse").textContent = "Oprindelse: " + mad.gsx$oprindelse.$t;
             document.querySelector(".pris").textContent = "Pris: " + mad.gsx$pris.$t + " ,-";
@@ -233,5 +238,8 @@
             this.classList.add("valgt");
             visMad();
         }
+
     </script>
-</body></html>
+</body>
+
+</html>
